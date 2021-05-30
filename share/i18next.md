@@ -108,9 +108,11 @@ graph TD
 
 ```mermaid
 graph TD
-    A[同步预发多语言到本地] --> B[代码里写中文]
-    B --> C[i18n ally extract text to i18n messages]
+    A[同步预发多语言到本地] --> B{代码里写中文}
+    B -- 是 --> C[i18n ally extract text to i18n messages]
     C --> D[i18next-parser]
+    B -- 否 --> I[动态多语言, 组件多语言]
+    I --> D
     D --> E[i18next-export 新增 key]
     E --> F[产品翻译 Excel]
     F --> G[平台上传 Excel]
